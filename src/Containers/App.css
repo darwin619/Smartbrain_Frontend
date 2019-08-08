@@ -14,4 +14,19 @@
   	 height: 100%;
 }
 
+.celeb-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.celeb {
+	text-align: center;
+	
+	color: white;
+	text-transform: capitalize;
+	font-size: 1.3rem;
+
+}
+
 

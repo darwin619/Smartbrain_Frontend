@@ -16,6 +16,7 @@ const initialState = {
       box: {},
       route: 'signin',
       isSignedIn: false,
+      celebName: '',
       user: {
       id: '',
       name: '',
@@ -59,8 +60,10 @@ class App extends Component {
     }
   }
 
-  displayFaceBox = (box) => {
+  displayFaceBox = (box, data) => {
     this.setState({box: box});
+    this.setState({celebName: data.outputs[0].data.regions[0].data.concepts[0].name});
+      console.log(this.state.celebName)
   }
 
   onInputChange = (event) => {
@@ -97,7 +100,7 @@ class App extends Component {
       }
 
 
-      this.displayFaceBox(this.calculateFaceLocation(response))
+      this.displayFaceBox(this.calculateFaceLocation(response),response)
     })
     .catch(err => console.log(err));
   }
@@ -114,7 +117,7 @@ class App extends Component {
    
     
 render() {
-  const { isSignedIn, route, box, imageUrl } = this.state;
+  const { isSignedIn, route, box, imageUrl, celebName } = this.state;
   return (
     <div>
 
@@ -131,6 +134,9 @@ render() {
         	<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
 
           <FaceRecognition box={box} imageUrl={imageUrl} />
+          <div className="celeb-container">
+          {celebName ? (<span className="celeb shadow-5 responsive p2">Celebrity name is: {celebName}</span>) : ""}
+          </div>
           </div>
 
           : ( route === 'signin'
