@@ -1,0 +1,25 @@
+.user {
+	text-transform: capitalize;
+	margin: 0 auto;
+	width: 50%;
+	font-weight: lighter;
+}
+
+.history-container {
+	display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 60px;
+    grid-template-rows: 1fr; 
+	width: 90%;
+	margin: 0 auto;
+
+}
+
+.grid {
+	@media screen and (max-width: 600px) {
+		margin-left:auto;
+		margin-right:auto;
+		margin-bottom: 60px;
+		width: 100%;
+}
+}
